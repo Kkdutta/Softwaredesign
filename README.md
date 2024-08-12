@@ -1,38 +1,57 @@
-# Software Design for Data Scientists
+### Scenario:
+You are a data scientist working for a company that specializes in analyzing and providing insights on book sales data. Your task is to create a RESTful API that allows users to retrieve information about books, including their titles, authors, publication dates, and sales data.
 
-This is the code repository that accompanies the book "Software Engineering for Data Scientists" by Catherine Nelson, published by O'Reilly Media.
 
-## Dependencies
+### Requirements:
+1. The API should have the following endpoints:
+- GET /books: Returns a list of all books in the database.
+- GET /books/{id}: Returns information about a specific book, including its title, author, publication date, and sales data.
+- POST /books: Creates a new book in the database.
+- PUT /books/{id}: Updates an existing book in the database.
+- DELETE /books/{id}: Deletes a book from the database.
 
-I used Python 3.10 while writing the book. You can find package versions in `requirements.txt`
+2. The API uses a simple mysql database to store book data. You can use another database management system you like, but you must provide instructions on how to set it up and use it.
 
-## Setup Instructions
+3. The API should handle errors and exceptions properly, including validation errors, database errors, and HTTP errors.
 
-Before you install any packages, create a new virtual environment using the following command on macOS or Linux:
+4. The API should be secure, using HTTPS and authentication/authorization mechanisms to protect against unauthorized access.
 
-`$ python -m venv SD4DS`
 
-You can replace `SD4DS` with the name of your virtual environment.
+The code in this folder provides a basic structure for the API, including the endpoints, database model, and error handling. However, it is incomplete and will require additional work to implement the requirements listed above.
 
-Next, activate the virtual environment with this command:
 
-`$ source SEforDS/bin/activate`
+### Instructions:
+1. Pull the latest changes from the class Github page. The starter code for assignment 2 is available under the folder `Assignment_2`. 
 
-For Windows, run
-`.\SEforDS\Scripts\activate`
+2. Starter code uses FastAPI to setup the different API endpoints. Consult their documentation for more details: https://devdocs.io/fastapi/
 
-You can change the execution policy by running the following command in your PowerShell as an administrator:
-`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+3. Run `uvicorn main:app` to run the app locally and start debugging debug. Once the app is running, you will be able to access the Swagger documentation here: http://127.0.0.1:8000/docs#/. You are encouraged to use the FastAPI documentation to test changes to the API and use the console to debug issues. 
 
-This command sets the policy to RemoteSigned, which means that you can run your own scripts or scripts from trusted publishers without any interruption. You’ll see the name of your virtual environment appear in parentheses before the command prompt, like so:
-`(SEforDS)$`
+![FastAPI Swagger Documentation](./static/swagger_docs.png)
 
-This is common to any of the virtual environment tools above. You can now install packages using pip into your virtual environment. When you’re done with the virtual environment, you can exit it with this command:
-`(SEforDS)$ deactivate`
+4. Complete the implementation of the API, including the endpoints, database model, and error handling.
 
-The name of your virtual environment will disappear from the command prompt.
+5. Complete implementation of the GET, POST, PUT and DELETE methods in `main.py` file. 
 
-It’s best practice to create a new virtual environment every time you start a new project, activate it, then install the libraries you need for that project. You should keep your system Python installation “clean” and not install any third-party libraries system-wide. This will prevent any conflicts between library versions.
+6. Fix the UI (in index.html) so you can get the results and the UI looks like this when it loads. You need to add authorization headers in both the GET and POST calls in the index.html file to make this possible. You can access the test UI for the app here: http://127.0.0.1:8000/static/index.html
 
-Then run the following to install all required dependencies. 
-`pip install -r .\requirements.txt`
+![Book API Test UI](./static/book_api_test_ui.png)
+
+7. Your submission should include a zipped copy of the entire contents of `Assignment_2` folder. Also include a screenshot of the index.html page with the following book data visible in the list. Include your screenshot inside the `static` folder where the `index.html` file already lives. 
+- Title: The Great Gatsby
+- Author: F SCOTT FITZGERALD
+- Publication Date: 1925/04/10
+- Sales Data: 30 million copies sold
+
+8. Authentication/authorization mechanisms have been implemented to protect against unauthorized access. Make sure to use the dummy API key `your_api_key_here` to test your implementation. Feel free to use your own (more secure) API keys as well. 
+
+9. Test the API thoroughly to ensure that it works as expected.
+
+
+### Grading:
+The assignment will be graded based on the following criteria:
+- Completeness and correctness of the implementation (50%)
+- Quality of the code, including organization, readability, and maintainability (20%)
+- Thoroughness and effectiveness of testing (20%)
+- Quality of the instructions and documentation (10%)
+
